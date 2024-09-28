@@ -1,5 +1,4 @@
-// V2 | Includes OOP : Classes, Objects, 'This' keyword, Constructor
-// Using 1D array, String Methods.
+// V3 | everything from prev v + Static method. 
 
 import java.util.Scanner;
 
@@ -10,7 +9,7 @@ class Player {
     int ballsFaced;
     boolean isOut;
 
-    public Player(String name) {  //constructor
+    public Player(String name) {
         this.name = name;
         this.runs = 0;
         this.ballsFaced = 0;
@@ -56,6 +55,10 @@ class CricketGame {
         players[index] = new Player(name);
     }
 
+    public static boolean isValidRun(int run) {     //static method
+        return run == 1 || run == 2 || run == 3 || run == 4 || run == 6;
+    }
+
     public void playBall(String ballResult, int run) {
         if (currentPlayerIndex >= players.length) {
             System.out.println("All players are out!");
@@ -65,7 +68,7 @@ class CricketGame {
         Player currentPlayer = players[currentPlayerIndex];
         switch (ballResult) {
             case "run":
-                if (run == 0 || run == 1 || run == 2 || run == 3 || run == 4 || run == 6) {
+                if (isValidRun(run)) {
                     currentPlayer.scoreRuns(run);
                     runs += run;
                     balls++;
@@ -80,7 +83,7 @@ class CricketGame {
                 balls++;
                 break;
             case "noball":
-                if (run == 0 || run == 1 || run == 2 || run == 3 || run == 4 || run == 6) {
+                if (isValidRun(run)) {
                     runs += run;
                     noballs++;
                 } else {
@@ -88,7 +91,7 @@ class CricketGame {
                 }
                 break;
             case "wide":
-                if (run == 0 || run == 1 || run == 2 || run == 3 || run == 4 || run == 6) {
+                if (isValidRun(run)) {
                     runs += run;
                     wideballs++;
                 } else {
@@ -113,7 +116,7 @@ class CricketGame {
     }
 }
 
-public class cricketplayers {
+public class cricketv3 {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
