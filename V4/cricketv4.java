@@ -35,6 +35,8 @@ class CricketGame {
     int runs;
     int noballs;
     int wideballs;
+    int sixers;
+    int fours;
     Player[] players;
     int currentPlayerIndex;
 
@@ -46,6 +48,8 @@ class CricketGame {
         this.runs = 0;
         this.noballs = 0;
         this.wideballs = 0;
+        this.sixers = 0;
+        this.fours = 0;
         this.players = new Player[11]; // Fixed number of players
         this.currentPlayerIndex = 0;
     }
@@ -71,6 +75,11 @@ class CricketGame {
                     currentPlayer.scoreRuns(run);
                     runs += run;
                     balls++;
+                    if (run == 6) {
+                        sixers++;
+                    } else if (run == 4) {
+                        fours++;
+                    }
                 } else {
                     System.out.println("Enter valid runs. (1/2/3/4/6)");
                 }
@@ -82,20 +91,25 @@ class CricketGame {
                 balls++;
                 break;
             case "noball":
-                if (isValidRun(run)) {
-                    runs += run;
-                    noballs++;
-                } else {
-                    System.out.println("Enter valid runs. (1/2/3/4/6)");
-                }
+                noballs++;
+                runs++;
+
+                // if (isValidRun(run)) {
+                //     runs += run;
+                //     noballs++;
+                // } else {
+                //     System.out.println("Enter valid runs. (1/2/3/4/6)");
+                // }
                 break;
             case "wide":
-                if (isValidRun(run)) {
-                    runs += run;
-                    wideballs++;
-                } else {
-                    System.out.println("Enter valid runs. (1/2/3/4/6)");
-                }
+                wideballs++;
+                runs++;
+                // if (isValidRun(run)) {
+                //     runs += run;
+                //     wideballs++;
+                // } else {
+                //     System.out.println("Enter valid runs. (1/2/3/4/6)");
+                // }
                 break;
             default:
                 System.out.println("Enter Valid Operation!!!");
@@ -113,6 +127,7 @@ class CricketGame {
         System.out.println("\nTotal Runs: " + runs + " | Total Wickets: " + wickets);
         System.out.println("Average Runs: " + (runs / totalBalls));
         System.out.println("No Balls: " + noballs + " | Wide Balls: " + wideballs);
+        System.out.println("Total Sixers (6s): " + noballs + " | Total Fours (4s): " + wideballs);
     }
 }
 
