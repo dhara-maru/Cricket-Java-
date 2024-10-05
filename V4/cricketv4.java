@@ -1,4 +1,4 @@
-// V4 : Assistment's "bare minimum" part is done but OOPS concepts are not implemented yet. 
+// V4 : Assignment's "bare minimum" part is done but OOPS concepts are not implemented yet. 
 
 import java.util.Scanner;
 
