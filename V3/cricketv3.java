@@ -103,42 +103,16 @@ class CricketGame {
         }
     }
 
-    // public void displayScore() {
-    //     System.out.println("\n~~~~~~~~~~~~~ Player-Wise Scoreboard ~~~~~~~~~~~~~\n");
-    //     for (Player player : players) {
-    //         if (player != null) {
-    //             System.out.println(player.name + ": " + player.runs + " runs,\t\t Balls Faced: " + player.ballsFaced + (player.isOut ? " (Out)" : " (Not Out)"));
-    //             System.out.println("_________________________________________________________________");
-    //         }
-    //     }
-    //     System.out.println("\nTotal Runs: " + runs + " | Total Wickets: " + wickets);
-    //     System.out.println("No Balls: " + noballs + " | Wide Balls: " + wideballs);
-    // }
     public void displayScore() {
-        StringBuffer scoreboard = new StringBuffer();
-        scoreboard.append("\n~~~~~~~~~~~~~ Player-Wise Scoreboard ~~~~~~~~~~~~~\n\n");
+        System.out.println("\n~~~~~~~~~~~~~ Player-Wise Scoreboard ~~~~~~~~~~~~~\n");
         for (Player player : players) {
             if (player != null) {
-                scoreboard.append(player.name)
-                        .append(": ")
-                        .append(player.runs)
-                        .append(" runs,\t\t Balls Faced: ")
-                        .append(player.ballsFaced)
-                        .append(player.isOut ? " (Out)" : " (Not Out)")
-                        .append("\n")
-                        .append("_________________________________________________________________\n");
+                System.out.println(player.name + ": " + player.runs + " runs,\t\t Balls Faced: " + player.ballsFaced + (player.isOut ? " (Out)" : " (Not Out)"));
+                System.out.println("_________________________________________________________________");
             }
         }
-        scoreboard.append("\nTotal Runs: ")
-                .append(runs)
-                .append(" | Total Wickets: ")
-                .append(wickets)
-                .append("\nNo Balls: ")
-                .append(noballs)
-                .append(" | Wide Balls: ")
-                .append(wideballs);
-
-        System.out.println(scoreboard.toString());
+        System.out.println("\nTotal Runs: " + runs + " | Total Wickets: " + wickets);
+        System.out.println("No Balls: " + noballs + " | Wide Balls: " + wideballs);
     }
 
 }
