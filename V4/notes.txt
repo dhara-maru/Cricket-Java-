@@ -16,12 +16,12 @@ Design a cricket scoreboard program that will show the following results:
 
 Note: 
 1. Code should include all the Object-Oriented concepts: 
-    a. Class and Object: Use array of Objects, constructor 
+    a. Class and Object: Use array of Objects, constructor ✅
     b. Inheritance: IS-A relationship between class.[Dynamic Method Dispatch-if possible] 
-    c. Encapsulation: Class bound with access specifier(public/private/protected/default) 
+    c. Encapsulation: Class bound with access specifier(public/private/protected/default) ✅
     d. Polymorphism: Method overloading and Method Overriding 
     e. Abstraction: Implement Abstract class with abstract method and also implement interface in java. 
-    f. Keyword: use static, this, final 
+    f. Keyword: use static, this, final ✅
     g. Exception Handling: Handle runtime error through custom exception. 
 
 2. Number of balls per over and number of players in each team are fix. 

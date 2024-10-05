@@ -9,7 +9,7 @@ class Player {
     int ballsFaced;
     boolean isOut;
 
-    public Player(String name) {
+    public Player(String name) { //Constructor ✅
         this.name = name;
         this.runs = 0;
         this.ballsFaced = 0;
@@ -38,11 +38,14 @@ class CricketGame {
     int wideballs;
     int sixers;
     int fours;
-    Player[] players;
+    Player[] players;                       // Array of Player objects ✅
     int currentPlayerIndex;
 
+    final int NUMBER_OF_PLAYERS = 11;       // 'final' keyword ✅
+    static final int MAX_OVERS = 50;
+
     public CricketGame(int overs) {
-        this.overs = overs;
+        this.overs = overs;                 // 'this' keyword ✅
         this.totalBalls = overs * 6;
         this.balls = 0;
         this.wickets = 0;
@@ -51,8 +54,13 @@ class CricketGame {
         this.wideballs = 0;
         this.sixers = 0;
         this.fours = 0;
-        this.players = new Player[11]; // Fixed number of players
+        this.players = new Player[NUMBER_OF_PLAYERS];
         this.currentPlayerIndex = 0;
+    }
+
+    // Static block ✅
+    static {
+        System.out.println("Cricket Game loaded. Max Overs: " + MAX_OVERS);
     }
 
     public void addPlayer(int index, String name) {
@@ -129,7 +137,6 @@ public class cricketv4 {
         System.out.println("************************************************");
         System.out.println("          Welcome to the Cricket Game!          ");
         System.out.println("************************************************\n");
-
         // Match Type Selection
         System.out.print("Select Match Type (1 - ODI, 2 - T20, 3 - IPL): ");
         int matchType = sc.nextInt();
