@@ -1,6 +1,8 @@
+
 import java.util.Scanner;
 
 class Player {
+
     String name;
     int runs;
     int ballsFaced;
@@ -25,6 +27,7 @@ class Player {
 }
 
 class CricketGame {
+
     int overs;
     int totalBalls;
     int balls;
@@ -108,12 +111,13 @@ class CricketGame {
             }
         }
         System.out.println("\nTotal Runs: " + runs + " | Total Wickets: " + wickets);
+        System.out.println("Average Runs: " + (runs / totalBalls));
         System.out.println("No Balls: " + noballs + " | Wide Balls: " + wideballs);
     }
-
 }
 
 public class cricketv4 {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -125,44 +129,82 @@ public class cricketv4 {
         System.out.print("Select Match Type (1 - ODI, 2 - T20, 3 - IPL): ");
         int matchType = sc.nextInt();
         String matchTypeName = "";
-        String[] teamAPlayers = {"Player A1", "Player A2", "Player A3", "Player A4", "Player A5", "Player A6", "Player A7", "Player A8", "Player A9", "Player A10", "Player A11"};
-        String[] teamBPlayers = {"Player B1", "Player B2", "Player B3", "Player B4", "Player B5", "Player B6", "Player B7", "Player B8", "Player B9", "Player B10", "Player B11"};
-        
-        if (matchType == 1) {
+        String[] teamAPlayers = new String[11];
+        String[] teamBPlayers = new String[11];
+        String teamA = "";
+        String teamB = "";
+
+        // Team Names and Players based on Match Type
+        if (matchType == 1) { // ODI
             matchTypeName = "ODI";
-        } else if (matchType == 2) {
+            String[] odiTeams = {"India", "Australia", "England", "Pakistan", "South Africa", "New Zealand", "West Indies", "Sri Lanka"};
+            System.out.println("\nAvailable ODI Teams:");
+            for (int i = 0; i < odiTeams.length; i++) {
+                System.out.println((i + 1) + ". " + odiTeams[i]);
+            }
+            System.out.print("Select Team A for Batting (1 to " + odiTeams.length + "): ");
+            int teamAIndex = sc.nextInt() - 1;
+            teamA = odiTeams[teamAIndex];
+
+            System.out.print("Select Team B for Bowling (1 to " + odiTeams.length + "): ");
+            int teamBIndex = sc.nextInt() - 1;
+            teamB = odiTeams[teamBIndex];
+
+            // Fixed players for ODI
+            teamAPlayers = new String[]{"Virat Kohli", "Rohit Sharma", "Shubman Gill", "KL Rahul", "Hardik Pandya", "Ravindra Jadeja", "Jasprit Bumrah", "Mohammed Shami", "Bhuvneshwar Kumar", "Rishabh Pant", "Yuzvendra Chahal"};
+            teamBPlayers = new String[]{"David Warner", "Steve Smith", "Pat Cummins", "Glenn Maxwell", "Mitchell Starc", "Travis Head", "Kane Richardson", "Josh Hazlewood", "Adam Zampa", "Marcus Stoinis", "Marnus Labuschagne"};
+        } else if (matchType == 2) { // T20
             matchTypeName = "T20";
-        } else if (matchType == 3) {
+            String[] t20Teams = {"India", "England", "Australia", "South Africa", "New Zealand", "Pakistan", "West Indies", "Sri Lanka"};
+            System.out.println("\nAvailable T20 Teams:");
+            for (int i = 0; i < t20Teams.length; i++) {
+                System.out.println((i + 1) + ". " + t20Teams[i]);
+            }
+            System.out.print("Select Team A for Batting (1 to " + t20Teams.length + "): ");
+            int teamAIndex = sc.nextInt() - 1;
+            teamA = t20Teams[teamAIndex];
+
+            System.out.print("Select Team B for Bowling (1 to " + t20Teams.length + "): ");
+            int teamBIndex = sc.nextInt() - 1;
+            teamB = t20Teams[teamBIndex];
+
+            // Fixed players for T20
+            teamAPlayers = new String[]{"Rohit Sharma", "KL Rahul", "Virat Kohli", "Hardik Pandya", "Rishabh Pant", "Suryakumar Yadav", "Jasprit Bumrah", "Bhuvneshwar Kumar", "Yuzvendra Chahal", "Ravi Ashwin", "Shreyas Iyer"};
+            teamBPlayers = new String[]{"Jos Buttler", "Jonny Bairstow", "Ben Stokes", "Eoin Morgan", "Jason Roy", "Jofra Archer", "Mark Wood", "Adil Rashid", "Moeen Ali", "Sam Curran", "Chris Woakes"};
+        } else if (matchType == 3) { // IPL
             matchTypeName = "IPL";
+            String[] iplTeams = {"Chennai Super Kings", "Mumbai Indians", "Royal Challengers Bangalore", "Kolkata Knight Riders", "Delhi Capitals", "Sunrisers Hyderabad", "Rajasthan Royals", "Gujarat Titans"};
+
+            System.out.println("\nAvailable IPL Teams:");
+            for (int i = 0; i < iplTeams.length; i++) {
+                System.out.println((i + 1) + ". " + iplTeams[i]);
+            }
+            System.out.print("Select Team A for Batting (1 to " + iplTeams.length + "): ");
+            int teamAIndex = sc.nextInt() - 1;
+            teamA = iplTeams[teamAIndex];
+
+            System.out.print("Select Team B for Bowling (1 to " + iplTeams.length + "): ");
+            int teamBIndex = sc.nextInt() - 1;
+            teamB = iplTeams[teamBIndex];
+
+            // Fixed names for IPL players
+            teamAPlayers = new String[]{"Virat Kohli", "AB de Villiers", "Glenn Maxwell", "Yuzvendra Chahal", "Harshal Patel", "Mohammed Siraj", "Devdutt Padikkal", "Dinesh Karthik", "Kohli", "Shahbaz Ahmed", "Josh Hazlewood"};
+            teamBPlayers = new String[]{"Rohit Sharma", "Jasprit Bumrah", "Kieron Pollard", "Quinton de Kock", "Suryakumar Yadav", "Trent Boult", "Hardik Pandya", "Ishan Kishan", "Rahul Chahar", "Aditya Tare", "Dewald Brevis"};
         } else {
-            System.out.println("Invalid match type selected. Defaulting to ODI.");
-            matchTypeName = "ODI";
+            System.out.println("Invalid match type selected. Exiting.");
+            return;
         }
 
-        // Team Selection
-        System.out.println("\nSelect Teams for the Match:");
-        System.out.println("1. Team A");
-        System.out.println("2. Team B");
-        
-        System.out.print("Select Team for Batting (1 or 2): ");
-        int battingTeamIndex = sc.nextInt();
-        int bowlingTeamIndex = battingTeamIndex == 1 ? 2 : 1; // Determine the bowling team
-
+        // Get number of overs
         System.out.print("Enter the number of overs: ");
         int overs = sc.nextInt();
 
         CricketGame game1 = new CricketGame(overs);
-        CricketGame game2 = new CricketGame(overs); // Second game instance for the second innings
+        CricketGame game2 = new CricketGame(overs);
 
         // Adding players to batting team
-        if (battingTeamIndex == 1) {
-            for (int i = 0; i < teamAPlayers.length; i++) {
-                game1.addPlayer(i, teamAPlayers[i]);
-            }
-        } else {
-            for (int i = 0; i < teamBPlayers.length; i++) {
-                game1.addPlayer(i, teamBPlayers[i]);
-            }
+        for (int i = 0; i < teamAPlayers.length; i++) {
+            game1.addPlayer(i, teamAPlayers[i]);
         }
 
         System.out.println("\n--- First Innings Starts Now! ---\n");
@@ -189,21 +231,15 @@ public class cricketv4 {
             System.out.println("------------------------------------------------\n");
         }
 
-        // FINAL SCOREBOARD for First Innings
+        // Final Scoreboard for Team A
         System.out.println("\n************************************************");
-        System.out.println("            First Innings Ended. Final Score:          ");
+        System.out.println("            Innings Ended. Team A Score:          ");
         System.out.println("************************************************");
         game1.displayScore();
 
-        // Adding players to second innings (the other team)
-        if (bowlingTeamIndex == 1) {
-            for (int i = 0; i < teamAPlayers.length; i++) {
-                game2.addPlayer(i, teamAPlayers[i]);
-            }
-        } else {
-            for (int i = 0; i < teamBPlayers.length; i++) {
-                game2.addPlayer(i, teamBPlayers[i]);
-            }
+        // Adding players to bowling team
+        for (int i = 0; i < teamBPlayers.length; i++) {
+            game2.addPlayer(i, teamBPlayers[i]);
         }
 
         System.out.println("\n--- Second Innings Starts Now! ---\n");
@@ -230,16 +266,25 @@ public class cricketv4 {
             System.out.println("------------------------------------------------\n");
         }
 
-        // FINAL SCOREBOARD for Second Innings
+        // FINAL SCOREBOARD for Team B
         System.out.println("\n************************************************");
-        System.out.println("            Second Innings Ended. Final Score:          ");
+        System.out.println("            Innings Ended. Team B Score:          ");
         System.out.println("************************************************");
         game2.displayScore();
 
-        // Announce the winning team based on total runs scored
-        String winningTeam = game1.runs > game2.runs ? (battingTeamIndex == 1 ? "Team A" : "Team B") : (battingTeamIndex == 1 ? "Team B" : "Team A");
-        System.out.println("\n********************************************");
-        System.out.println("             Winning Team: " + winningTeam);
-        System.out.println("********************************************");
+        // Determine the winning team
+        System.out.println("\n************************************************");
+        System.out.println("          Match Result:          ");
+        System.out.println("************************************************");
+        if (game1.runs > game2.runs) {
+            System.out.println(teamA + " wins by " + (game1.runs - game2.runs) + " runs!");
+        } else if (game1.runs < game2.runs) {
+            System.out.println(teamB + " wins by " + (11 - game2.wickets) + " wickets!");
+        } else {
+            System.out.println("The match is a tie!");
+        }
+
+        //SHOW MATCH STATISTICS 
+        System.out.println("");
     }
 }
