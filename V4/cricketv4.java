@@ -91,25 +91,14 @@ class CricketGame {
                 balls++;
                 break;
             case "noball":
+                System.out.println("NO BALL! You got a Free-hit and extra ball !");
                 noballs++;
                 runs++;
-
-                // if (isValidRun(run)) {
-                //     runs += run;
-                //     noballs++;
-                // } else {
-                //     System.out.println("Enter valid runs. (1/2/3/4/6)");
-                // }
                 break;
             case "wide":
+                System.out.println("WIDE BALL! You got an extra run and extra ball !");
                 wideballs++;
                 runs++;
-                // if (isValidRun(run)) {
-                //     runs += run;
-                //     wideballs++;
-                // } else {
-                //     System.out.println("Enter valid runs. (1/2/3/4/6)");
-                // }
                 break;
             default:
                 System.out.println("Enter Valid Operation!!!");
@@ -125,9 +114,9 @@ class CricketGame {
             }
         }
         System.out.println("\nTotal Runs: " + runs + " | Total Wickets: " + wickets);
-        System.out.println("Average Runs: " + (runs / totalBalls));
+        System.out.println("Average Runs: " + (float) (runs / totalBalls));
         System.out.println("No Balls: " + noballs + " | Wide Balls: " + wideballs);
-        System.out.println("Total Sixers (6s): " + noballs + " | Total Fours (4s): " + wideballs);
+        System.out.println("Total Sixers (6s): " + sixers + " | Total Fours (4s): " + fours);
     }
 }
 
@@ -234,7 +223,7 @@ public class cricketv4 {
             }
 
             int run = 0;
-            if (ballResult.equals("run") || ballResult.equals("noball") || ballResult.equals("wide")) {
+            if (ballResult.equals("run")) {
                 System.out.print("Enter runs: ");
                 run = sc.nextInt();
             }
@@ -269,7 +258,7 @@ public class cricketv4 {
             }
 
             int run = 0;
-            if (ballResult.equals("run") || ballResult.equals("noball") || ballResult.equals("wide")) {
+            if (ballResult.equals("run")) {
                 System.out.print("Enter runs: ");
                 run = sc.nextInt();
             }
