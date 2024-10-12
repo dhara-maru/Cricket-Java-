@@ -1,6 +1,15 @@
-// V5 : Implemented Inheritance (Matchtype : ODI, T20, IPL)
+// V5 : Implemented Inheritance (Matchtype : ODI, T20, IPL), Interface for CricketGame class's methods, Abstract class MatchType and DMD (uses MatchType dynamically based on user input matchtype.)
 
 import java.util.Scanner;
+
+interface CricketGameOperations { // Interface ✅ (CricketGame class's methods)
+    void addPlayer(int index, String name);
+
+    void playBall(String ballResult, int run);
+
+    void displayScore(MatchType matchType);
+    // boolean isValidRun(int run);
+}
 
 class Player {
 
@@ -27,7 +36,7 @@ class Player {
     }
 }
 
-// Base class for Match Types
+// Base & Abstract class for Match Types ✅
 abstract class MatchType {
     abstract void displayType();
 }
@@ -53,7 +62,7 @@ class IPL extends MatchType {
     }
 }
 
-class CricketGame {
+class CricketGame implements CricketGameOperations {
 
     int overs;
     int totalBalls;
@@ -150,7 +159,7 @@ class CricketGame {
             }
         }
         System.out.println("\n");
-        matchType.displayType();
+        matchType.displayType(); // Dynamic method dispatch done ✅
         System.out.println("\nTotal Runs: " + runs + " | Total Wickets: " + wickets);
         System.out.println("Average Runs: " + (float) (runs / totalBalls));
         System.out.println("No Balls: " + noballs + " | Wide Balls: " + wideballs);
