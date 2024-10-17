@@ -7,4 +7,6 @@ public interface CricketGameOperations { // Interface ✅ (CricketGame class's m
 
     public void displayScore(MatchType matchType);
 
+    public int getovers();
+
 }

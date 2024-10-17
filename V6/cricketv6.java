@@ -1,17 +1,18 @@
 // V6 : Implemented Package
 package V6;
 
-import V6.MatchType;
-import V6.ODI;
-import V6.T20;
-import V6.IPL;
-import V6.CricketGame;
-import V6.Player;
 import java.util.Scanner;
+
+//custom excption for overs
+class InvalidOversException extends Exception {
+    InvalidOversException(String msg) {
+        super(msg);
+    }
+}
 
 public class cricketv6 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InvalidOversException {
         Scanner sc = new Scanner(System.in);
 
         System.out.println("************************************************");
@@ -27,7 +28,7 @@ public class cricketv6 {
         String teamA = "";
         String teamB = "";
 
-        String[] teamPlayers = new String[] { "Virat Kohli", "Rohit Sharma", "Shubman Gill", "KL Rahul",
+        String[] teamPlayers = { "Virat Kohli", "Rohit Sharma", "Shubman Gill", "KL Rahul",
                 "Hardik Pandya",
                 "Ravindra Jadeja", "Jasprit Bumrah", "Mohammed Shami", "Bhuvneshwar Kumar", "Rishabh Pant",
                 "Yuzvendra Chahal" };
@@ -94,9 +95,8 @@ public class cricketv6 {
             return;
         }
 
-        // Get number of overs
-        System.out.print("Enter the number of overs: ");
-        int overs = sc.nextInt();
+        CricketGame overobj = new CricketGame();
+        int overs = overobj.getovers();
 
         CricketGame game1 = new CricketGame(overs);
         CricketGame game2 = new CricketGame(overs);

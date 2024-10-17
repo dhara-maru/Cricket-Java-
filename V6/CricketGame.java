@@ -1,5 +1,7 @@
 package V6;
 
+import java.util.Scanner;
+
 public class CricketGame implements CricketGameOperations {
 
     public int overs;
@@ -13,9 +15,15 @@ public class CricketGame implements CricketGameOperations {
     public int fours;
     public Player[] players; // Array of Player objects ✅
     public int currentPlayerIndex;
+    Scanner sc = new Scanner(System.in);
 
     public final int NUMBER_OF_PLAYERS = 11; // 'final' keyword ✅
     public static final int MAX_OVERS = 50;
+
+    public CricketGame() {
+        // default bcoz getovers() method uses this class's obj which doesn't have any
+        // args
+    }
 
     public CricketGame(int overs) {
         this.overs = overs; // 'this' keyword ✅
@@ -42,6 +50,33 @@ public class CricketGame implements CricketGameOperations {
 
     public static boolean isValidRun(int run) { // static method
         return run == 1 || run == 2 || run == 3 || run == 4 || run == 6;
+    }
+
+    public int getovers() {
+        int overs = 0;
+        try {
+            System.out.print("Enter the number of overs: ");
+            overs = sc.nextInt();
+
+            if (overs > 50) {
+                throw new InvalidOversException("Only upto 50 overs are allowed!!!");
+            }
+        } catch (InvalidOversException msg) {
+            System.out.println(msg.toString());
+
+            try {
+                System.out.print("Please re-enter the number of overs [max : 50 overs]: ");
+                overs = sc.nextInt();
+
+                if (overs > 50) {
+                    throw new InvalidOversException("Overs must be 50 or less. Ending the prg!");
+                }
+            } catch (InvalidOversException msg2) {
+                System.out.println("Caught exception again: " + msg2.getMessage());
+                System.exit(1);
+            }
+        }
+        return overs;
     }
 
     public void playBall(String ballResult, int run) {
