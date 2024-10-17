@@ -1,9 +1,9 @@
-// V6 : Implemented Package
-package V6;
+// V6 : Implemented Package, Custom Exception. all the assignment parts are done now.
+package V6; //package ✅
 
 import java.util.Scanner;
 
-//custom excption for overs
+//custom excption for overs ✅
 class InvalidOversException extends Exception {
     InvalidOversException(String msg) {
         super(msg);
