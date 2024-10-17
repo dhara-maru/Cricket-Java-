@@ -151,13 +151,13 @@ class CricketGame implements CricketGameOperations {
 
     public void displayScore(MatchType matchType) {
         System.out.println("\n~~~~~~~~~~~~~ Player-Wise Scoreboard ~~~~~~~~~~~~~\n");
-        for (Player player : players) {
-            if (player != null) {
-                System.out.println(player.name + ": " + player.runs + " runs,\t\t Balls Faced: " + player.ballsFaced
-                        + (player.isOut ? " (Out)" : " (Not Out)"));
-                System.out.println("_________________________________________________________________");
-            }
+        for (int i = 0; i < players.length; i++) {
+            Player player = players[i];
+            System.out.println(player.name + ": " + player.runs + " runs,\t\t Balls Faced: " + player.ballsFaced
+                    + (player.isOut ? " (Out)" : " (Not Out)"));
+            System.out.println("_________________________________________________________________");
         }
+
         System.out.println("\n");
         matchType.displayType(); // Dynamic method dispatch done ✅
         System.out.println("\nTotal Runs: " + runs + " | Total Wickets: " + wickets);
@@ -186,66 +186,57 @@ public class cricketv5 {
         String[] teamBPlayers = new String[11];
         String teamA = "";
         String teamB = "";
+        teamAPlayers = new String[] { "Virat Kohli", "Rohit Sharma", "Shubman Gill", "KL Rahul", "Hardik Pandya",
+                "Ravindra Jadeja", "Jasprit Bumrah", "Mohammed Shami", "Bhuvneshwar Kumar", "Rishabh Pant",
+                "Yuzvendra Chahal" };
+        teamBPlayers = new String[] { "David Warner", "Steve Smith", "Pat Cummins", "Glenn Maxwell",
+                "Mitchell Starc", "Travis Head", "Kane Richardson", "Josh Hazlewood", "Adam Zampa",
+                "Marcus Stoinis", "Marnus Labuschagne" };
+        String[] InternationalTeams = { "India", "Australia", "England", "Pakistan", "South Africa", "New Zealand",
+                "West Indies", "Sri Lanka" };
+        String[] iplTeams = { "Chennai Super Kings", "Mumbai Indians", "Royal Challengers Bangalore",
+                "Kolkata Knight Riders", "Delhi Capitals", "Sunrisers Hyderabad", "Rajasthan Royals",
+                "Gujarat Titans" };
 
         // Team Names and Players based on Match Type
         if (matchType == 1) { // ODI
-
             matchTypenew = new ODI();
-
             matchTypeName = "ODI";
-            String[] odiTeams = { "India", "Australia", "England", "Pakistan", "South Africa", "New Zealand",
-                    "West Indies", "Sri Lanka" };
+
             System.out.println("\nAvailable ODI Teams:");
-            for (int i = 0; i < odiTeams.length; i++) {
-                System.out.println((i + 1) + ". " + odiTeams[i]);
+            for (int i = 0; i < InternationalTeams.length; i++) {
+                System.out.println((i + 1) + ". " + InternationalTeams[i]);
             }
-            System.out.print("Select Team A for Batting (1 to " + odiTeams.length + "): ");
+            System.out.print("Select Team A for Batting (1 to " + InternationalTeams.length + "): ");
             int teamAIndex = sc.nextInt() - 1;
-            teamA = odiTeams[teamAIndex];
+            teamA = InternationalTeams[teamAIndex];
 
-            System.out.print("Select Team B for Bowling (1 to " + odiTeams.length + "): ");
+            System.out.print("Select Team B for Bowling (1 to " + InternationalTeams.length + "): ");
             int teamBIndex = sc.nextInt() - 1;
-            teamB = odiTeams[teamBIndex];
+            teamB = InternationalTeams[teamBIndex];
 
-            // Fixed players for ODI
-            teamAPlayers = new String[] { "Virat Kohli", "Rohit Sharma", "Shubman Gill", "KL Rahul", "Hardik Pandya",
-                    "Ravindra Jadeja", "Jasprit Bumrah", "Mohammed Shami", "Bhuvneshwar Kumar", "Rishabh Pant",
-                    "Yuzvendra Chahal" };
-            teamBPlayers = new String[] { "David Warner", "Steve Smith", "Pat Cummins", "Glenn Maxwell",
-                    "Mitchell Starc", "Travis Head", "Kane Richardson", "Josh Hazlewood", "Adam Zampa",
-                    "Marcus Stoinis", "Marnus Labuschagne" };
         } else if (matchType == 2) { // T20
 
             matchTypenew = new T20();
 
             matchTypeName = "T20";
-            String[] t20Teams = { "India", "England", "Australia", "South Africa", "New Zealand", "Pakistan",
-                    "West Indies", "Sri Lanka" };
+
             System.out.println("\nAvailable T20 Teams:");
-            for (int i = 0; i < t20Teams.length; i++) {
-                System.out.println((i + 1) + ". " + t20Teams[i]);
+            for (int i = 0; i < InternationalTeams.length; i++) {
+                System.out.println((i + 1) + ". " + InternationalTeams[i]);
             }
-            System.out.print("Select Team A for Batting (1 to " + t20Teams.length + "): ");
+            System.out.print("Select Team A for Batting (1 to " + InternationalTeams.length + "): ");
             int teamAIndex = sc.nextInt() - 1;
-            teamA = t20Teams[teamAIndex];
+            teamA = InternationalTeams[teamAIndex];
 
-            System.out.print("Select Team B for Bowling (1 to " + t20Teams.length + "): ");
+            System.out.print("Select Team B for Bowling (1 to " + InternationalTeams.length + "): ");
             int teamBIndex = sc.nextInt() - 1;
-            teamB = t20Teams[teamBIndex];
+            teamB = InternationalTeams[teamBIndex];
 
-            // Fixed players for T20
-            teamAPlayers = new String[] { "Rohit Sharma", "KL Rahul", "Virat Kohli", "Hardik Pandya", "Rishabh Pant",
-                    "Suryakumar Yadav", "Jasprit Bumrah", "Bhuvneshwar Kumar", "Yuzvendra Chahal", "Ravi Ashwin",
-                    "Shreyas Iyer" };
-            teamBPlayers = new String[] { "Jos Buttler", "Jonny Bairstow", "Ben Stokes", "Eoin Morgan", "Jason Roy",
-                    "Jofra Archer", "Mark Wood", "Adil Rashid", "Moeen Ali", "Sam Curran", "Chris Woakes" };
         } else if (matchType == 3) { // IPL
             matchTypenew = new IPL();
 
             matchTypeName = "IPL";
-            String[] iplTeams = { "Chennai Super Kings", "Mumbai Indians", "Royal Challengers Bangalore",
-                    "Kolkata Knight Riders", "Delhi Capitals", "Sunrisers Hyderabad", "Rajasthan Royals",
-                    "Gujarat Titans" };
 
             System.out.println("\nAvailable IPL Teams:");
             for (int i = 0; i < iplTeams.length; i++) {
@@ -259,13 +250,6 @@ public class cricketv5 {
             int teamBIndex = sc.nextInt() - 1;
             teamB = iplTeams[teamBIndex];
 
-            // Fixed names for IPL players
-            teamAPlayers = new String[] { "Virat Kohli", "AB de Villiers", "Glenn Maxwell", "Yuzvendra Chahal",
-                    "Harshal Patel", "Mohammed Siraj", "Devdutt Padikkal", "Dinesh Karthik", "Kohli", "Shahbaz Ahmed",
-                    "Josh Hazlewood" };
-            teamBPlayers = new String[] { "Rohit Sharma", "Jasprit Bumrah", "Kieron Pollard", "Quinton de Kock",
-                    "Suryakumar Yadav", "Trent Boult", "Hardik Pandya", "Ishan Kishan", "Rahul Chahar", "Aditya Tare",
-                    "Dewald Brevis" };
         } else {
             System.out.println("Invalid match type selected. Exiting.");
             return;
@@ -350,10 +334,10 @@ public class cricketv5 {
         System.out.println("************************************************");
         game2.displayScore(matchTypenew);
 
-        // Determine the winning team
+        // show the winning team
         System.out.println("\n************************************************");
-        System.out.println("          Match Result:          ");
-        System.out.println("************************************************");
+        System.out.print("   Match Result:   ");
+
         if (game1.runs > game2.runs) {
             System.out.println(teamA + " wins by " + (game1.runs - game2.runs) + " runs!");
         } else if (game1.runs < game2.runs) {
@@ -361,8 +345,7 @@ public class cricketv5 {
         } else {
             System.out.println("The match is a tie!");
         }
+        System.out.println("************************************************");
 
-        // SHOW MATCH STATISTICS
-        System.out.println("");
     }
 }
