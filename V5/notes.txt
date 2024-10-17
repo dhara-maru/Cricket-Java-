@@ -9,7 +9,7 @@ Output:
 Design a cricket scoreboard program that will show the following results: 
 1. Announcement of winning team. ✅
 2. Score of both the team- with total no of balls played and wickets by each team. ✅
-3. Score of each player (Event: by selecting team, score of each player should be displayed).
+3. Score of each player ✅
 4. Average run/over(display after completion of match). ✅
 5. Display no. of 6’s 4’s , wide-ball, wicket, no-ball after completion of every over and also overall statistics after completion of match. ✅
 
@@ -19,7 +19,7 @@ Note:
     a. Class and Object: Use array of Objects, constructor ✅
     b. Inheritance: IS-A relationship between class.[Dynamic Method Dispatch-if possible] ✅
     c. Encapsulation: Class bound with access specifier(public/private/protected/default) ✅
-    d. Polymorphism: Method overloading and Method Overriding 
+    d. Polymorphism: Method overloading and Method Overriding ✅
     e. Abstraction: Implement Abstract class with abstract method and also implement interface in java. ✅
     f. Keyword: use static, this, final ✅
     g. Exception Handling: Handle runtime error through custom exception. 
